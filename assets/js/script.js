@@ -95,6 +95,33 @@ function init(){
       localStorage.setItem("i", i);
     }
  });
+ btn2.addEventListener("click", function(){
+  if (i < quizList.length) {
+//    i is coming from local storage
+    window.location.href = "index.html";
+    createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
+    i++;
+    localStorage.setItem("i", i);
+  }
+});
+btn3.addEventListener("click", function(){
+  if (i < quizList.length) {
+//    i is coming from local storage
+    window.location.href = "index.html";
+    createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
+    i++;
+    localStorage.setItem("i", i);
+  }
+});
+btn4.addEventListener("click", function(){
+  if (i < quizList.length) {
+//    i is coming from local storage
+    window.location.href = "index.html";
+    createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
+    i++;
+    localStorage.setItem("i", i);
+  }
+});
 }
 //-------------------------------------------------------------------------------
 function createBox(q,a1,a2,a3,a4,ca,idname){ 
@@ -122,7 +149,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
     if(a1 === ca){
       alert("answer is corretc");
       return;
-    }else alert("incorect")
+    }
   });
   div.append(btn1);
 
@@ -134,7 +161,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
     if(a2 === ca){
       alert("answer is corretc");
       return;
-    }else alert("incorect")
+    }
   });
   div.append(btn2);
 
@@ -146,7 +173,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
     if(a3 === ca){
       alert("answer is corretc");
       return;
-    }else alert("incorect")
+    }
   });
   div.append(btn3);
 
@@ -158,7 +185,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
     if(a4 === ca){
       alert("answer is corretc");
       return;
-    }else alert("incorect")
+    }
   });
   div.append(btn4);
   document.addEventListener("click", function() {
@@ -168,14 +195,21 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
 //-------------------------------------------------------------------------------
 function startTimer() {
   // Sets timer
-  timerCount = 500;
-  startQuiztimeBar(timerCount);
+  timerCount = localStorage.getItem('timerCount');
+  // alert(timerCount);
+  if (timerCount === undefined) {
+    timerCount = 500;
+  }
+  // startQuiztimeBar(timerCount);
+  move();
   timer = setInterval(function() {
     timerCount--;
     if (timerCount > 1) {
       timerCount--;
+      localStorage.setItem('timerCount', timerCount);
     } else if (timerCount === 1) {
       timerCount--;
+      localStorage.setItem('timerCount', timerCount);
     } else {
         clearInterval(timer);
         endQuiz();
@@ -187,13 +221,36 @@ function endQuiz() {
   window.location.href = "result.html";
 }
 //-------------------------------timer bar---------------------------------------
-const bars = document.querySelectorAll(".round-time-bar");
-function startQuiztimeBar() {
-  bars.forEach((bar) => {
-    bar.classList.remove("round-time-bar");
-    bar.offsetWidth;
-    bar.classList.add("round-time-bar");
-  });
-};
+// const bars = document.querySelectorAll(".round-time-bar");
+// function startQuiztimeBar() {
+//   bars.forEach((bar) => {
+//     bar.classList.remove("round-time-bar");
+//     bar.offsetWidth;
+//     bar.classList.add("round-time-bar");
+//   });
+// };
+//-------------------------------------------------------------------------------
+var iBar = 0;
+function move() {
+  if (iBar == 0) {
+    iBar = 1;
+    var elem = document.getElementById("myBar");
+    var width = localStorage.getItem("barwidth");
+    if (width === undefined){
+      width = 1;
+    }
+    var id = setInterval(frame, 5000);
+    function frame() {
+      if (width >= 5000) {
+        clearInterval(id);
+        iBar = 0;
+      } else {
+        width++;
+        localStorage.setItem("barwidth" , width);
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
 //-------------------------------------------------------------------------------
 init();

@@ -136,3 +136,14 @@ li::after {
   }
 }
 /* ------------------------------------------------ */
+#myBar {
+  width: 1%;
+  height: 3px;
+  background-color: #04AA6D;
+  z-index: 0;
+}
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  z-index: 0;
+}
