@@ -6,14 +6,14 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #eff5f8;
+  background-color: #FFDDE2FF;
   color: #001b44;
 }
 
 label, p {
   font-size: 30px;
 }
-
+ 
 input {
   height: 50px;
   width: 100%;
@@ -54,25 +54,85 @@ li::after {
   display: block;
   clear: both;
 }
-
-li button {
-  float: right;
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  align-self: flex-start;
+  padding:auto ;
+  height: 40PX;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 50%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #000;
+  background-color: #008C76FF;
   border: none;
-  height: 40px;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  background-color: #ff7034;
-  color: white;
-  font-size: 1em;
+  outline: none;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  }
+  
+.button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
 }
 
 .card {
-  display: block;
-  background-color:	#FFFFE0;
-  border: 1px solid #eceff1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 150%;
+  font-weight: bold;
+  color: rgb(0, 63, 54);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background-color:	#FAA094FF;
   border-radius: 8px;
   box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
     rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
   margin: 60px auto;
-  padding: 20px;
+  padding: 10%;
   width: 80vw;
+  margin-bottom: 5%;
 }
+.card::content:hover{
+  transform: translateY(-7px);
+}
+/* ------------------timer bar---------------------- */
+.round-time-bar {
+  margin: 1rem;
+  overflow: hidden;
+}
+.round-time-bar div {
+  height: 1px;
+  animation: roundtime calc(var(--duration) * 1s) steps(var(--duration))
+    forwards;
+  transform-origin: left center;
+  background: linear-gradient(to bottom, rgb(61, 185, 3), rgb(0, 0, 0));
+}
+.round-time-bar[data-style="smooth"] div {
+  animation: roundtime calc(var(--duration) * 1s) linear forwards;
+}
+.round-time-bar[data-style="fixed"] div {
+  width: calc(var(--duration) * 5%);
+}
+.round-time-bar[data-color="blue"] div {
+  background: linear-gradient(to bottom, #64b5f6, #1565c0);
+}
+@keyframes roundtime {
+  to {
+    /* More performant than `width` */
+    transform: scaleX(0);
+  }
+}
+/* ------------------------------------------------ */

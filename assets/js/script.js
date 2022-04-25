@@ -1,4 +1,7 @@
 var qList = document.querySelector("#quiz");
+var timer;
+var timerCount;
+var btn1,btn2,btn3,btn4;
 
 var quizList = [{
   question: 'Which of the following is correct about features of JavaScript',
@@ -73,20 +76,124 @@ var quizList = [{
   ca: 'slice()'
 }];
 
-
+//-------------------------------------------------------------------------------
 function init(){
-  for (var i = 0;i<quizList.length;i++)
-    { 
-      createBox(quizList[i].question,i);
-    } 
+  startTimer();
+  var i = localStorage.getItem("i");;
+  if(i === undefined){
+    i = 0;
+  }else if (i >= quizList.length){
+    window.location.href = "result.html";
+  }
+  createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
+  btn1.addEventListener("click", function(){
+    if (i < quizList.length) {
+//    i is coming from local storage
+      window.location.href = "index.html";
+      createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
+      i++;
+      localStorage.setItem("i", i);
+    }
+ });
 }
-
-function createBox(q,idname){ 
+//-------------------------------------------------------------------------------
+function createBox(q,a1,a2,a3,a4,ca,idname){ 
   var div = document.createElement("div");//element 
-  div.textContent = idname + ' - ' + q + ' ?'; 
+  // div.textContent = idname+1 + ' - ' + q + ' ?'; 
+  div.textContent = q + ' ?'; 
   div.setAttribute("id" , idname);
   div.setAttribute("class" , "card"); 
   qList.appendChild(div); 
-} 
 
+  btn1 = document.createElement("button");
+    btn1.setAttribute("class" , "button"); 
+  btn2 = document.createElement("button");
+    btn2.setAttribute("class" , "button"); 
+  btn3 = document.createElement("button");
+    btn3.setAttribute("class" , "button"); 
+  btn4 = document.createElement("button");
+    btn4.setAttribute("class" , "button"); 
+
+  btn1.innerHTML = a1;
+  btn1.type = "submit";
+  btn1.name = a1;
+  btn1.id = 'button';
+  btn1.addEventListener("click", function (event) {
+    if(a1 === ca){
+      alert("answer is corretc");
+      return;
+    }else alert("incorect")
+  });
+  div.append(btn1);
+
+  btn2.innerHTML = a2;
+  btn2.type = "submit";
+  btn2.name = a2;
+  btn2.id = 'button';
+  btn2.addEventListener("click", function (event) {
+    if(a2 === ca){
+      alert("answer is corretc");
+      return;
+    }else alert("incorect")
+  });
+  div.append(btn2);
+
+  btn3.innerHTML = a3;
+  btn3.type = "submit";
+  btn3.name = a3;
+  btn3.id = 'button';
+  btn3.addEventListener("click", function (event) {
+    if(a3 === ca){
+      alert("answer is corretc");
+      return;
+    }else alert("incorect")
+  });
+  div.append(btn3);
+
+  btn4.innerHTML = a4;
+  btn4.type = "submit";
+  btn4.name = a4;
+  btn4.id = 'button';
+  btn4.addEventListener("click", function (event) {
+    if(a4 === ca){
+      alert("answer is corretc");
+      return;
+    }else alert("incorect")
+  });
+  div.append(btn4);
+  document.addEventListener("click", function() {
+    console.log("test");
+  })
+} 
+//-------------------------------------------------------------------------------
+function startTimer() {
+  // Sets timer
+  timerCount = 500;
+  startQuiztimeBar(timerCount);
+  timer = setInterval(function() {
+    timerCount--;
+    if (timerCount > 1) {
+      timerCount--;
+    } else if (timerCount === 1) {
+      timerCount--;
+    } else {
+        clearInterval(timer);
+        endQuiz();
+    }
+  }, 1000);
+}
+//-------------------------------------------------------------------------------
+function endQuiz() {
+  window.location.href = "result.html";
+}
+//-------------------------------timer bar---------------------------------------
+const bars = document.querySelectorAll(".round-time-bar");
+function startQuiztimeBar() {
+  bars.forEach((bar) => {
+    bar.classList.remove("round-time-bar");
+    bar.offsetWidth;
+    bar.classList.add("round-time-bar");
+  });
+};
+//-------------------------------------------------------------------------------
 init();

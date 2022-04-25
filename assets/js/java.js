@@ -2,7 +2,6 @@ var wordcontainer = document.querySelector(".wordcontainer");
 var startgame = document.querySelector("#startGame");
 var listEl = document.querySelector("#boxs");
 var timerEl = document.getElementById('time');
- 
 
 var word = 'millisecond';
 var words = word.split('');
@@ -10,13 +9,9 @@ var words = word.split('');
 startgame.addEventListener("click", countdown);
 
 
-//<div class="box" data-word="1" data-state="hidden"></div>
 for (var i = 0;i<words.length;i++){ 
     createBox(i);
 } 
-// for (var i = 0;i<words.length;i++){ 
-//   putletter(words[i],i); 
-// } 
 
 document.addEventListener('keydown', function (event){
   for (var i = 0;i<words.length;i++){ 
@@ -32,6 +27,11 @@ function createBox(idname){
     div.setAttribute("id" , idname);
     div.setAttribute("class" , "box"); 
     listEl.appendChild(div); 
+    var btn = document.createElement("button");
+    btn.innerHTML = "Submit";
+    btn.type = "submit";
+    btn.name = "formBtn";
+    document.body.appendChild(btn);
 } 
 
 function putletter(singleword,idname){ 
