@@ -98,6 +98,14 @@ function init(){
         quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
         quizAnswers += 1;
         localStorage.setItem("quizAnswers", quizAnswers);
+      }else{
+        alert("incorect!")
+        timerCount = parseInt(localStorage.getItem('timerCount'));
+        timerCount = timerCount - 20;
+        localStorage.setItem('timerCount',timerCount);
+        var width = parseInt(localStorage.getItem("barwidth"));
+        width += 10;
+        localStorage.setItem("barwidth" , width);
       }
 //    i is coming from local storage
       window.location.href = "quiz.html";
@@ -113,6 +121,14 @@ function init(){
         quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
         quizAnswers += 1;
         localStorage.setItem("quizAnswers", quizAnswers);
+      }else{
+        alert("incorect!")
+        timerCount = parseInt(localStorage.getItem('timerCount'));
+        timerCount = timerCount - 20;
+        localStorage.setItem('timerCount',timerCount);
+        var width = parseInt(localStorage.getItem("barwidth"));
+        width += 10;
+        localStorage.setItem("barwidth" , width);
       }
 //    i is coming from local storage
     window.location.href = "quiz.html";
@@ -128,6 +144,14 @@ btn3.addEventListener("click", function(){
         quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
         quizAnswers += 1;
         localStorage.setItem("quizAnswers", quizAnswers);
+      }else{
+        alert("incorect!")
+        timerCount = parseInt(localStorage.getItem('timerCount'));
+        timerCount = timerCount - 20;
+        localStorage.setItem('timerCount',timerCount);
+        var width = parseInt(localStorage.getItem("barwidth"));
+        width += 10;
+        localStorage.setItem("barwidth" , width);
       }
 //    i is coming from local storage
     window.location.href = "quiz.html";
@@ -143,6 +167,14 @@ btn4.addEventListener("click", function(){
       quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
       quizAnswers += 1;
       localStorage.setItem("quizAnswers", quizAnswers);
+    }else{
+      alert("incorect!")
+      timerCount = parseInt(localStorage.getItem('timerCount'));
+      timerCount = timerCount - 20;
+      localStorage.setItem('timerCount',timerCount);
+      var width = parseInt(localStorage.getItem("barwidth"));
+      width += 10;
+      localStorage.setItem("barwidth" , width);
     }
 //    i is coming from local storage
     window.location.href = "quiz.html";
@@ -187,13 +219,13 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
   //    if(a1 === ca){
   //     quizAnswers[idname] = "Correct";
   //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //   }else{
-  //     quizAnswers[idname] = "Incorrect";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //     timerCount = localStorage.getItem('timerCount');
-  //     timerCount = timerCount - 10;
-  //     localStorage.setItem('timerCount',timerCount);
-  //   }
+    // }else{
+    //   quizAnswers[idname] = "Incorrect";
+    //   localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+    //   timerCount = localStorage.getItem('timerCount');
+    //   timerCount = timerCount - 10;
+    //   localStorage.setItem('timerCount',timerCount);
+    // }
   // });
   div.append(btn1);
 
