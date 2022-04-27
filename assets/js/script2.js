@@ -1,58 +1,27 @@
-// var todoInput = document.querySelector("#todo-text");
-// var todoForm = document.querySelector("#todo-form");
-// var todoList = document.querySelector("#todo-list");
-// var todoCountSpan = document.querySelector("#todo-count");
-// var todos = [];
 
+var qResult = document.querySelector("#result");
+//-------------------------------------------------------------------------------
+function result(){
+    var result = localStorage.getItem("quizAnswers");
+    var qRepeat = localStorage.getItem('qRepeat');
+    var quizListlength = parseInt(localStorage.getItem('qLength'));
+    quizListlength = quizListlength - result;
+    if(result!=undefined){
+            var r1 = document.createElement("div");//check answer 
+            var r2 = document.createElement("div");//check answer 
+            var r3 = document.createElement("div");//check answer 
 
-// function renderTodos() {
-//   todoList.innerHTML = "";
-//   todoCountSpan.textContent = todos.length;
+            r1.textContent = result;
+            r2.textContent = qRepeat;
+            r3.textContent = quizListlength;
 
-//   for (var i = 0; i < todos.length; i++) {
-//     var todo = todos[i];
-//     var li = document.createElement("li");
-//     li.textContent = todo;
-//     li.setAttribute("data-index", i);
-//     var button = document.createElement("button");
-//     button.textContent = "Complete ✔️";
-//     li.appendChild(button);
-//     todoList.appendChild(li);
-//   }
-// }
+            r1.setAttribute("class" , "check");
+            r2.setAttribute("class" , "check");
+            r3.setAttribute("class" , "check");
 
-// function init() {
-//   var storedTodos = JSON.parse(localStorage.getItem("todos"));
-//   if (storedTodos !== null) {
-//     todos = storedTodos;
-//   }
-//     renderTodos();
-// }
-
-// function storeTodos() {
-//   localStorage.setItem("todos", JSON.stringify(todos));
-// }
-// todoForm.addEventListener("submit", function(event) {
-//   event.preventDefault();
-//   var todoText = todoInput.value.trim();
-//   if (todoText === "") {
-//     return;
-//   }
-//   todos.push(todoText);
-//   todoInput.value = "";
-//   storeTodos();
-//   renderTodos();
-// });
-
-// todoList.addEventListener("click", function(event) {
-//   var element = event.target;
-//   if (element.matches("button") === true) {
-//     var index = element.parentElement.getAttribute("data-index");
-//     todos.splice(index, 1);
-//     storeTodos();
-//     renderTodos();
-//   }
-// });
-
-// init();
-
+            qResult.appendChild(r1);
+            qResult.appendChild(r2);
+            qResult.appendChild(r3);
+        }
+    }
+  //-------------------------------------------------------------------------------

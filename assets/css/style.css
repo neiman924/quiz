@@ -9,7 +9,52 @@ body {
   background-color: #FFDDE2FF;
   color: #001b44;
 }
-
+main{
+    font-family: 'Roboto', sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+    color: rgb(0, 63, 54);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    text-align: center;
+    background-color:	#FAA094FF;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+      rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+    margin: 60px auto;
+    padding: 10%;
+    width: 80vw;
+    margin-bottom: 5%;
+}
+.mainbutton{
+  align-items: center;
+  padding:auto ;
+  height: 40PX;
+  width: 20%;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #000;
+  background-color: #008C76FF;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+.mainbutton:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(79, 79, 79, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
 label, p {
   font-size: 30px;
 }
@@ -107,6 +152,13 @@ li::after {
 }
 .card::content:hover{
   transform: translateY(-7px);
+}
+
+.check {
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+  opacity: 50%;
+  color: 0px 15px 20px rgba(79, 79, 79, 0.4);
 }
 /* ------------------timer bar---------------------- */
 #myBar {

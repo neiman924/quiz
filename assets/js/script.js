@@ -1,4 +1,7 @@
 var qList = document.querySelector("#quiz");
+var qCheck = document.querySelector("#check");
+var qResult = document.querySelector("#result");
+var quizAnswers;
 var timer;
 var timerCount;
 var btn1,btn2,btn3,btn4;
@@ -75,21 +78,29 @@ var quizList = [{
   a4: 'some()',
   ca: 'slice()'
 }];
-
+localStorage.setItem("qLength", quizList.length);
 //-------------------------------------------------------------------------------
 function init(){
+
   startTimer();
   var i = localStorage.getItem("i");;
   if(i === undefined){
     i = 0;
   }else if (i >= quizList.length){
-    window.location.href = "result.html";
+    // window.location.href = "result.html";
+    endQuiz();
   }
   createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
   btn1.addEventListener("click", function(){
     if (i < quizList.length) {
+//----------adding to the correct answers localstorage-----------------------
+      if(quizList[i].a1 === quizList[i].ca){
+        quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
+        quizAnswers += 1;
+        localStorage.setItem("quizAnswers", quizAnswers);
+      }
 //    i is coming from local storage
-      window.location.href = "index.html";
+      window.location.href = "quiz.html";
       createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
       i++;
       localStorage.setItem("i", i);
@@ -97,8 +108,14 @@ function init(){
  });
  btn2.addEventListener("click", function(){
   if (i < quizList.length) {
+//----------adding to the correct answers localstorage-----------------------
+      if(quizList[i].a2 === quizList[i].ca){
+        quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
+        quizAnswers += 1;
+        localStorage.setItem("quizAnswers", quizAnswers);
+      }
 //    i is coming from local storage
-    window.location.href = "index.html";
+    window.location.href = "quiz.html";
     createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
     i++;
     localStorage.setItem("i", i);
@@ -106,8 +123,14 @@ function init(){
 });
 btn3.addEventListener("click", function(){
   if (i < quizList.length) {
+//----------adding to the correct answers localstorage-----------------------
+    if(quizList[i].a3 === quizList[i].ca){
+        quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
+        quizAnswers += 1;
+        localStorage.setItem("quizAnswers", quizAnswers);
+      }
 //    i is coming from local storage
-    window.location.href = "index.html";
+    window.location.href = "quiz.html";
     createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
     i++;
     localStorage.setItem("i", i);
@@ -115,8 +138,14 @@ btn3.addEventListener("click", function(){
 });
 btn4.addEventListener("click", function(){
   if (i < quizList.length) {
+    //----------adding to the correct answers localstorage-----------------------
+    if(quizList[i].a4 === quizList[i].ca){
+      quizAnswers = parseInt(localStorage.getItem("quizAnswers"));
+      quizAnswers += 1;
+      localStorage.setItem("quizAnswers", quizAnswers);
+    }
 //    i is coming from local storage
-    window.location.href = "index.html";
+    window.location.href = "quiz.html";
     createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
     i++;
     localStorage.setItem("i", i);
@@ -126,6 +155,12 @@ btn4.addEventListener("click", function(){
 //-------------------------------------------------------------------------------
 function createBox(q,a1,a2,a3,a4,ca,idname){ 
   var div = document.createElement("div");//element 
+  var check = document.createElement("p");//check answer 
+  check.textContent = "Correct";
+  check.setAttribute("class" , "check");
+  // qCheck.appendChild(check);
+
+
   // div.textContent = idname+1 + ' - ' + q + ' ?'; 
   div.textContent = q + ' ?'; 
   div.setAttribute("id" , idname);
@@ -145,48 +180,86 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
   btn1.type = "submit";
   btn1.name = a1;
   btn1.id = 'button';
-  btn1.addEventListener("click", function (event) {
-    if(a1 === ca){
-      alert("answer is corretc");
-      return;
-    }
-  });
+  // btn1.addEventListener("click", function (event) {
+
+  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
+
+  //    if(a1 === ca){
+  //     quizAnswers[idname] = "Correct";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //   }else{
+  //     quizAnswers[idname] = "Incorrect";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //     timerCount = localStorage.getItem('timerCount');
+  //     timerCount = timerCount - 10;
+  //     localStorage.setItem('timerCount',timerCount);
+  //   }
+  // });
   div.append(btn1);
 
   btn2.innerHTML = a2;
   btn2.type = "submit";
   btn2.name = a2;
   btn2.id = 'button';
-  btn2.addEventListener("click", function (event) {
-    if(a2 === ca){
-      alert("answer is corretc");
-      return;
-    }
-  });
+  // btn2.addEventListener("click", function (event) {
+
+  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
+
+  //   if(a2 === ca){
+  //     quizAnswers[idname] = "Correct";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //   }else{
+  //     quizAnswers[idname] = "Incorrect";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //     timerCount = localStorage.getItem('timerCount');
+  //     timerCount = timerCount - 10;
+  //     localStorage.setItem('timerCount',timerCount);
+  //   }
+  // });
   div.append(btn2);
 
   btn3.innerHTML = a3;
   btn3.type = "submit";
   btn3.name = a3;
   btn3.id = 'button';
-  btn3.addEventListener("click", function (event) {
-    if(a3 === ca){
-      alert("answer is corretc");
-      return;
-    }
-  });
+  // btn3.addEventListener("click", function (event) {
+
+  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
+ 
+  //   if(a3 === ca){
+  //     quizAnswers[idname] = "Correct";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //   }else{
+  //     quizAnswers[idname] = "Incorrect";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //     timerCount = localStorage.getItem('timerCount');
+  //     timerCount = timerCount - 10;
+  //     localStorage.setItem('timerCount',timerCount);
+  //   }
+  // });
   div.append(btn3);
 
   btn4.innerHTML = a4;
   btn4.type = "submit";
   btn4.name = a4;
   btn4.id = 'button';
-  btn4.addEventListener("click", function (event) {
-    if(a4 === ca){
-      alert("answer is corretc");
-      return;
-    }
-  });
+  // btn4.addEventListener("click", function (event) {
+
+  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
+  //   alert("correct");
+
+  //   if(a4 === ca){
+  //     alert("correct");
+  //     quizAnswers[idname] = "Correct";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //   }else{
+  //     quizAnswers[idname] = "Incorrect";
+  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
+  //     timerCount = localStorage.getItem('timerCount');
+  //     timerCount = timerCount - 10;
+  //     localStorage.setItem('timerCount',timerCount);
+  //   }
+  // });
   div.append(btn4);
   document.addEventListener("click", function() {
     console.log("test");
@@ -239,9 +312,9 @@ function move() {
     if (width === undefined){
       width = 1;
     }
-    var id = setInterval(frame, 5000);
+    var id = setInterval(frame, 2500);
     function frame() {
-      if (width >= 5000) {
+      if (width >= 2500) {
         clearInterval(id);
         iBar = 0;
       } else {
@@ -250,6 +323,20 @@ function move() {
         elem.style.width = width + "%";
       }
     }
+  }
+}
+//-------------------------------------------------------------------------------
+function result(){
+  alert('test' + qResult);
+  var result = JSON.parse(localStorage.getItem("quizAnswers"));
+  if(result!=undefined){
+      for (var i = 0;i<result.length;i++){
+        alert("test" + result);
+          var r1 = document.createElement("div");//check answer 
+          r1.textContent = result[i];
+          r1.setAttribute("class" , "check");
+          qResult.appendChild(r1);
+      }
   }
 }
 //-------------------------------------------------------------------------------

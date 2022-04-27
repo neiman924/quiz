@@ -10,20 +10,26 @@
         <title>JavaScript Quize!</title>
     </head>
 
-    <body>
+    <body onload="result()">
         <div id="quiz">
-            <div class="card" id="result">
+            <div class="card" id="result" >
                 <p>result</p>
-                <button onclick="myFunction()">start over</button>
+                <button class="button" onclick="myFunction()">start over</button>
             </div>
         </div>
+
         <script>
             function myFunction() {
               localStorage.setItem("i",0);
               localStorage.setItem('timerCount',500);
               localStorage.setItem('barwidth',1);
+              var qRepeat = parseInt(localStorage.getItem('qRepeat'));
+              qRepeat += 1;
+              localStorage.setItem('qRepeat' , qRepeat);
               window.location.href = "index.html";
-            }
-            </script>
+              }
+
+        </script>
+    <script src="./assets/js/script2.js"></script>
     </body>
 </html>
