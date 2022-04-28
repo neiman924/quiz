@@ -11,6 +11,11 @@ This week’s coursework will equip you with all the skills you need to succeed 
 ## User Story
 
 ```
+## Mock-Up
+```
+![index](./assets/img/1.jpg)
+![firstpage](./Assets/img/1.jpg)
+
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
@@ -36,7 +41,7 @@ THEN I can save my initials and my score
 
 The following animation demonstrates the application functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/img/1.jpg)
 
 ## Grading Requirements
 

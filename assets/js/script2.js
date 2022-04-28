@@ -27,7 +27,7 @@ function result(){
             r5.setAttribute("class" , "check");
 
             qResult.appendChild(r1);
-            qResult.appendChild(r2);
+            if(qRepeat!=0) qResult.appendChild(r2);
             qResult.appendChild(r4);
             qResult.appendChild(r5);
 
