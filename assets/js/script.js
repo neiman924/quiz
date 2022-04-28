@@ -5,7 +5,7 @@ var quizAnswers;
 var timer;
 var timerCount;
 var btn1,btn2,btn3,btn4;
-
+//---------------------quiz list object---------------------------------------------
 var quizList = [{
   question: 'Which of the following is correct about features of JavaScript',
   a1: 'JavaScript is a lightweight, interpreted programming language.',
@@ -79,7 +79,7 @@ var quizList = [{
   ca: 'slice()'
 }];
 localStorage.setItem("qLength", quizList.length);
-//-------------------------------------------------------------------------------
+//---------------------the function runing the quiz----------------------------
 function init(){
 
   startTimer();
@@ -87,7 +87,6 @@ function init(){
   if(i === undefined){
     i = 0;
   }else if (i >= quizList.length){
-    // window.location.href = "result.html";
     endQuiz();
   }
   createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
@@ -108,6 +107,7 @@ function init(){
         localStorage.setItem("barwidth" , width);
       }
 //    i is coming from local storage
+
       window.location.href = "quiz.html";
       createBox(quizList[i].question,quizList[i].a1,quizList[i].a2,quizList[i].a3,quizList[i].a4,quizList[i].ca,i);
       i++;
@@ -190,10 +190,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
   var check = document.createElement("p");//check answer 
   check.textContent = "Correct";
   check.setAttribute("class" , "check");
-  // qCheck.appendChild(check);
 
-
-  // div.textContent = idname+1 + ' - ' + q + ' ?'; 
   div.textContent = q + ' ?'; 
   div.setAttribute("id" , idname);
   div.setAttribute("class" , "card"); 
@@ -212,86 +209,28 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
   btn1.type = "submit";
   btn1.name = a1;
   btn1.id = 'button';
-  // btn1.addEventListener("click", function (event) {
 
-  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
-
-  //    if(a1 === ca){
-  //     quizAnswers[idname] = "Correct";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-    // }else{
-    //   quizAnswers[idname] = "Incorrect";
-    //   localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-    //   timerCount = localStorage.getItem('timerCount');
-    //   timerCount = timerCount - 10;
-    //   localStorage.setItem('timerCount',timerCount);
-    // }
-  // });
   div.append(btn1);
 
   btn2.innerHTML = a2;
   btn2.type = "submit";
   btn2.name = a2;
   btn2.id = 'button';
-  // btn2.addEventListener("click", function (event) {
 
-  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
-
-  //   if(a2 === ca){
-  //     quizAnswers[idname] = "Correct";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //   }else{
-  //     quizAnswers[idname] = "Incorrect";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //     timerCount = localStorage.getItem('timerCount');
-  //     timerCount = timerCount - 10;
-  //     localStorage.setItem('timerCount',timerCount);
-  //   }
-  // });
   div.append(btn2);
 
   btn3.innerHTML = a3;
   btn3.type = "submit";
   btn3.name = a3;
   btn3.id = 'button';
-  // btn3.addEventListener("click", function (event) {
 
-  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
- 
-  //   if(a3 === ca){
-  //     quizAnswers[idname] = "Correct";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //   }else{
-  //     quizAnswers[idname] = "Incorrect";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //     timerCount = localStorage.getItem('timerCount');
-  //     timerCount = timerCount - 10;
-  //     localStorage.setItem('timerCount',timerCount);
-  //   }
-  // });
   div.append(btn3);
 
   btn4.innerHTML = a4;
   btn4.type = "submit";
   btn4.name = a4;
   btn4.id = 'button';
-  // btn4.addEventListener("click", function (event) {
 
-  //   quizAnswers = JSON.parse(localStorage.getItem("quizAnswers"));
-  //   alert("correct");
-
-  //   if(a4 === ca){
-  //     alert("correct");
-  //     quizAnswers[idname] = "Correct";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //   }else{
-  //     quizAnswers[idname] = "Incorrect";
-  //     localStorage.setItem("quizAnswers", JSON.stringify(quizAnswers));
-  //     timerCount = localStorage.getItem('timerCount');
-  //     timerCount = timerCount - 10;
-  //     localStorage.setItem('timerCount',timerCount);
-  //   }
-  // });
   div.append(btn4);
   document.addEventListener("click", function() {
     console.log("test");
@@ -299,13 +238,10 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
 } 
 //-------------------------------------------------------------------------------
 function startTimer() {
-  // Sets timer
   timerCount = localStorage.getItem('timerCount');
-  // alert(timerCount);
   if (timerCount === undefined) {
     timerCount = 500;
   }
-  // startQuiztimeBar(timerCount);
   move();
   timer = setInterval(function() {
     timerCount--;
@@ -321,20 +257,11 @@ function startTimer() {
     }
   }, 1000);
 }
-//-------------------------------------------------------------------------------
+//----------------------redirectiong to result function-------------------------
 function endQuiz() {
   window.location.href = "result.html";
 }
-//-------------------------------timer bar---------------------------------------
-// const bars = document.querySelectorAll(".round-time-bar");
-// function startQuiztimeBar() {
-//   bars.forEach((bar) => {
-//     bar.classList.remove("round-time-bar");
-//     bar.offsetWidth;
-//     bar.classList.add("round-time-bar");
-//   });
-// };
-//-------------------------------------------------------------------------------
+//------------------------time bar function--------------------------------------
 var iBar = 0;
 function move() {
   if (iBar == 0) {
@@ -359,11 +286,11 @@ function move() {
 }
 //-------------------------------------------------------------------------------
 function result(){
-  alert('test' + qResult);
   var result = JSON.parse(localStorage.getItem("quizAnswers"));
+
   if(result!=undefined){
       for (var i = 0;i<result.length;i++){
-        alert("test" + result);
+          alert("test" + result);
           var r1 = document.createElement("div");//check answer 
           r1.textContent = result[i];
           r1.setAttribute("class" , "check");

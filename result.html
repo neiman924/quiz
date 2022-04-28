@@ -10,15 +10,15 @@
         <title>JavaScript Quize!</title>
     </head>
 
-    <body onload="result()">
+    <body onload="result()"> <!-- result function is loading with the page to add the rest result to the page -->
         <div class="card" id="quiz">
             <div id="result" >
             </div>
-            <button class="button" onclick="myFunction()">start over</button>
+            <button class="resultbutton" onclick="myFunction()">start over</button>
         </div>
 
         <script>
-            function myFunction() {
+            function myFunction() {//is gonna reset the default variables and start the quiz again 
               localStorage.setItem("i",0);
               localStorage.setItem('timerCount',500);
               localStorage.setItem('barwidth',1);

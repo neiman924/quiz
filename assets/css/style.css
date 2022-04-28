@@ -146,7 +146,7 @@ li::after {
   box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
     rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
   margin: 60px auto;
-  padding: 10%;
+  padding: 5%;
   width: 80vw;
   margin-bottom: 5%;
 }
@@ -154,12 +154,12 @@ li::after {
   transform: translateY(-7px);
 }
 
-.check {
+/* .check {
   font-family: 'Roboto', sans-serif;
   font-size: 100%;
   opacity: 50%;
-  color: 0px 15px 20px rgba(79, 79, 79, 0.4);
-}
+  color: black;
+} */
 /* ------------------timer bar---------------------- */
 #myBar {
   width: 1%;
@@ -171,4 +171,46 @@ li::after {
   width: 100%;
   background-color: #ddd;
   z-index: 0;
+}
+.check {
+  font-family: 'Roboto', sans-serif;
+  font-size: 80%;
+  color: black;
+  background-color:	#ddd;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+  margin: 1%;
+  padding: 2px;
+  width: 70vw;
+  float: left;
+}
+
+.resultbutton{
+  align-items: center;
+  padding:auto ;
+  height: 50px;
+  width: 30%;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #000;
+  background-color: #008C76FF;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-left: 35%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+.resultbutton:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(79, 79, 79, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
 }

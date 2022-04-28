@@ -6,19 +6,57 @@
         <meta name="theme-color" content="#FFDDE2FF">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
         <link rel="stylesheet" href="./assets/css/style.css"/>
         <title>JavaScript Quize!</title>
     </head>
 
-    <body>
+    <body onload="myFunction()"> <!--myFunction is loading with the page -->
         <main>
             <h1>Coding Quiz Challenge</h1>
-            <h4>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds!</h4>
+            <h4>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time! Please enter your Name and Email address to push start whenever you were ready!</h4>
             <br>
-            <button class="mainbutton" onclick="myFunction()">START</button>
+<!-- ------------------------------------------------------------- -->
+            <div>
+                <div>
+                <form id="user-form">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label for="first-name">Name</label>
+                        <input type="text" class="form-input" id="first-name" placeholder="Enter first name" />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <label for="EmailAddress">Email Address</label>
+                        <input type="email" class="form-input" id="email" placeholder="Enter email" />
+                    </div>
+                    </div>
+                    </fieldset>
+                </form>
+                </div>
+            </div>
+<!-- ------------------------------------------------------------- -->
+            <button class="mainbutton" onclick="handleFormSubmit ()">START</button>
         </main>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
         <script>
-            function myFunction() {
+            function myFunction() {//this function is loading with the page and check to see if user already have any saved information or not and going to add the information in the form 
+                var username = localStorage.getItem('UserName');
+                var email = localStorage.getItem('Email');
+                if (username != undefined && email != undefined){
+                    document.getElementById("first-name").value = username;
+                    document.getElementById("email").value = email;
+                }
+            }
+
+            function handleFormSubmit() { // is going to reset default values and put user information on the localstorage and start the quiz 
+
+            var firstNameEl = document.getElementById('first-name').value;
+            var emailEl = document.getElementById('email').value;
+            localStorage.setItem('UserName', firstNameEl);
+            localStorage.setItem('Email', emailEl);
+
               localStorage.setItem("i",0);
               localStorage.setItem('timerCount',500);
               localStorage.setItem('barwidth',1);
