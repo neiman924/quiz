@@ -184,7 +184,7 @@ btn4.addEventListener("click", function(){
   }
 });
 }
-//-------------------------------------------------------------------------------
+//--------------------------creating quiz boxs function--------------------------------
 function createBox(q,a1,a2,a3,a4,ca,idname){ 
   var div = document.createElement("div");//element 
   var check = document.createElement("p");//check answer 
@@ -236,7 +236,7 @@ function createBox(q,a1,a2,a3,a4,ca,idname){
     console.log("test");
   })
 } 
-//-------------------------------------------------------------------------------
+//---------------------------timer function-------------------------------
 function startTimer() {
   timerCount = localStorage.getItem('timerCount');
   if (timerCount === undefined) {
