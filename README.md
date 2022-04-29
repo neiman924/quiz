@@ -12,6 +12,9 @@ with any wrong answer an alert gonna tell the user made a wrong choise and it is
 ![firstpage](./Assets/img/3.jpg)
 after finishing the test, app is going to display this window to tell the user how many time this quiz is repeated and its going to show how many correct and wrong answer they had: 
 ![firstpage](./Assets/img/4.jpg)
+I used this color palet for this project:
+
+![firstpage](./Assets/img/5.jpg)
 
 
 ## I reached the Acceptance Criteria
